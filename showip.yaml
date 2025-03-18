@@ -1,0 +1,14 @@
+---
+- name: demo
+  hosts: Switch
+  gather_facts: no
+
+  tasks:
+    - name: run show version on remote devices
+      cisco.ios.ios_command:
+        commands: show ip int br
+      register: demo
+
+    - name: Display command output
+      debug:
+        var: demo.stdout_lines
